@@ -1,26 +1,18 @@
-var showSecret = false;
+import '../css/main.scss';
+import { RandomGenerator } from './random-generator';
 
-secretButton.addEventListener('click', toggleSecretState);
-updateSecretParagraph();
+const outputParagraph = document.querySelector('#outputParagraph');
 
-function toggleSecretState() {
-    showSecret = !showSecret;
-    updateSecretParagraph();
-    updateSecretButton()
-}
+const outputRandomInt = () => {
+    outputParagraph.textContent = RandomGenerator.randomInteger();
+};
 
-function updateSecretButton() {
-    if (showSecret) {
-        secretButton.textContent = 'Hide the Secret';
-    } else {
-        secretButton.textContent = 'Show the Secret';
-    }
-}
+const outputRandomRange = () => {
+    outputParagraph.textContent = RandomGenerator.randomInteger(1, 500);
+};
 
-function updateSecretParagraph() {
-    if (showSecret) {
-        secretParagraph.style.display = 'block';
-    } else {
-        secretParagraph.style.display = 'none';
-    }
-}
+const buttonRadInt = document.querySelector('#randomInt');
+const buttonRadRange = document.querySelector('#randomRange');
+
+buttonRadInt.addEventListener('click', outputRandomInt);
+buttonRadRange.addEventListener('click', outputRandomRange);
